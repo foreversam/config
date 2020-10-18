@@ -1,0 +1,27 @@
+payload:
+  - DOMAIN-SUFFIX,debian.org
+  - DOMAIN-SUFFIX,freenom.com
+  - DOMAIN-SUFFIX,f-droid.org
+  - DOMAIN-SUFFIX,github.io
+  - DOMAIN-SUFFIX,githubusercontent.com
+  - DOMAIN-SUFFIX,jquery.com
+  - DOMAIN-SUFFIX,matrix.org
+  - DOMAIN-SUFFIX,mcpedl.com
+  - DOMAIN-SUFFIX,moriyashrine.org
+  - DOMAIN-SUFFIX,mozilla.net
+  - DOMAIN-SUFFIX,mozilla.org
+  - DOMAIN-SUFFIX,packagist.org
+  - DOMAIN-SUFFIX,php.net
+  - DOMAIN-SUFFIX,protondb.com
+  - DOMAIN-SUFFIX,protonmail.ch
+  - DOMAIN-SUFFIX,protonmail.com
+  - DOMAIN-SUFFIX,pypi.org
+  - DOMAIN-SUFFIX,python.org
+  - DOMAIN-SUFFIX,redditstatic.com
+  - DOMAIN-SUFFIX,rubygems.org
+  - DOMAIN-SUFFIX,stackoverflow.com
+  - DOMAIN-SUFFIX,steamcommunity.com
+  - DOMAIN-SUFFIX,steamdb.com
+  - DOMAIN-SUFFIX,sublimetext.com
+  - DOMAIN-SUFFIX,ubuntu.com
+  - DOMAIN-SUFFIX,v2fly.org

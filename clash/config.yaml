@@ -1,0 +1,237 @@
+# port: 7890
+# socks-port: 7891
+# redir-port: 7892
+mixed-port: 7893
+
+allow-lan: false
+
+mode: rule
+
+log-level: warning
+
+ipv6: false
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:7894
+  fake-ip-filter:
+    - '*.lan'
+    - 'time.windows.com'
+    - 'time.nist.gov'
+    - 'time.apple.com'
+    - 'time.asia.apple.com'
+    - '*.ntp.org.cn'
+    - '*.openwrt.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'time.ustc.edu.cn'
+    - 'pool.ntp.org'
+    - 'ntp.ubuntu.com'
+    - 'ntp.aliyun.com'
+    - 'ntp1.aliyun.com'
+    - 'ntp2.aliyun.com'
+    - 'ntp3.aliyun.com'
+    - 'ntp4.aliyun.com'
+    - 'ntp5.aliyun.com'
+    - 'ntp6.aliyun.com'
+    - 'ntp7.aliyun.com'
+    - 'time1.aliyun.com'
+    - 'time2.aliyun.com'
+    - 'time3.aliyun.com'
+    - 'time4.aliyun.com'
+    - 'time5.aliyun.com'
+    - 'time6.aliyun.com'
+    - 'time7.aliyun.com'
+    - '*.time.edu.cn'
+    - 'time1.apple.com'
+    - 'time2.apple.com'
+    - 'time3.apple.com'
+    - 'time4.apple.com'
+    - 'time5.apple.com'
+    - 'time6.apple.com'
+    - 'time7.apple.com'
+    - 'time1.google.com'
+    - 'time2.google.com'
+    - 'time3.google.com'
+    - 'time4.google.com'
+    - 'music.163.com'
+    - '*.music.163.com'
+    - '*.126.net'
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    - '*.kuwo.cn'
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - 'amobile.music.tc.qq.com'
+    - '*.xiami.com'
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - '*.*.*.srv.nintendo.net'
+    - '*.*.stun.playstation.net'
+    - 'xbox.*.*.microsoft.com'
+    - '*.*.xboxlive.com'
+  nameserver:
+    - 8.8.8.8
+    - 114.114.114.114
+
+proxies:
+  - name: "proxy0"
+    type:
+    server:
+    port:
+    password:
+
+  - name: "proxy1"
+    type:
+    server:
+    port:
+    password:
+
+  - name: "proxy2"
+    type:
+    server:
+    port:
+    password:
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - "proxy0"
+      - "proxy1"
+      - "proxy2"
+
+  - name: "MATCH"
+    type: select
+    proxies:
+      - DIRECT # Blacklist mode
+      - PROXY # Whitelist mode
+
+  - name: "Streaming"
+    type: select
+    proxies:
+      - PROXY
+      - "proxy0"
+      - "proxy1"
+      - "proxy2"
+
+  - name: "Privacy"
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - PROXY
+
+  - name: "Hijacking"
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - PROXY
+
+rule-providers:
+  Unbreak:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/Unbreak.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Unbreak.yaml
+    interval: 86400
+
+  Privacy:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/Guard/Privacy.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Guard/Privacy.yaml
+    interval: 86400
+
+  Hijacking:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/Guard/Hijacking.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Guard/Hijacking.yaml
+    interval: 86400
+
+  Streaming:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/StreamingMedia/Streaming.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml
+    interval: 86400
+
+  Global:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/Global.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml
+    interval: 86400
+
+  China:
+    type: http
+    behavior: classical
+    path: ./rule_set/DivineEngine/China.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/China.yaml
+    interval: 86400
+
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    path: ./rule_set/DivineEngine/Extra/ChinaIP.yaml
+    url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Extra/ChinaIP.yaml
+    interval: 86400
+
+  MyProxyList:
+    type: http
+    behavior: classical
+    path: ./rule_set/foreversam/MyProxyList.yaml
+    url: https://raw.githubusercontent.com/foreversam/config/main/clash/rule_set/foreversam/MyProxyList.yaml
+    interval: 86400
+
+rules:
+  # Unbreak
+  - RULE-SET,Unbreak,DIRECT
+
+  # Privacy
+  - RULE-SET,Privacy,Privacy
+
+  # Hijacking
+  - RULE-SET,Hijacking,Hijacking
+
+  # Streaming Media
+  - RULE-SET,Streaming,Streaming
+
+  # DNS Cache Pollution / IP Blackhole / Region-Restricted Access Denied / Network Jitter
+  - RULE-SET,Global,PROXY
+
+  # China Area Network
+  - RULE-SET,China,DIRECT
+
+  # Local Area Network
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+
+  # My proxy list
+  - RULE-SET,MyProxyList,PROXY
+
+  # From ipip.net
+  - RULE-SET,ChinaIP,DIRECT
+
+  - MATCH,MATCH
