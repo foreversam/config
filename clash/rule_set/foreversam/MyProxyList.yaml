@@ -1,8 +1,10 @@
 payload:
+  - DOMAIN-SUFFIX,bintray.com
   - DOMAIN-SUFFIX,debian.org
   - DOMAIN-SUFFIX,freenom.com
   - DOMAIN-SUFFIX,f-droid.org
   - DOMAIN-SUFFIX,github.io
+  - DOMAIN-SUFFIX,githubassets.com
   - DOMAIN-SUFFIX,githubusercontent.com
   - DOMAIN-SUFFIX,jquery.com
   - DOMAIN-SUFFIX,matrix.org
