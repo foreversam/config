@@ -1,0 +1,79 @@
+{
+    "log": {
+        "access": "none",
+        "loglevel": "warning"
+    },
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "type": "field",
+                "protocol": [
+                    "bittorrent"
+                ],
+                "outboundTag": "blackhole-out"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:cn"
+                ],
+                "outboundTag": "blackhole-out"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 443,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "",
+                        "flow": "xtls-rprx-direct",
+                        "email": ""
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": "127.0.0.1:80"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "alpn": [
+                        "http/1.1"
+                    ],
+                    "minVersion": "1.2",
+                    "certificates": [
+                        {
+                            "certificateFile": "",
+                            "keyFile": ""
+                        }
+                    ]
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "blackhole-out"
+        }
+    ]
+}
