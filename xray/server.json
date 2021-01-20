@@ -8,6 +8,13 @@
         "rules": [
             {
                 "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "blackhole-out"
+            },
+            {
+                "type": "field",
                 "protocol": [
                     "bittorrent"
                 ],
