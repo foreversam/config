@@ -23,7 +23,7 @@
                 "protocol": [
                     "bittorrent"
                 ],
-                "outboundTag": "freenom-out"
+                "outboundTag": "freedom-out"
             },
             {
                 "type": "field",
