@@ -76,6 +76,20 @@
                     "tls"
                 ]
             }
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 8388,
+            "protocol": "shadowsocks",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "",
+                        "method": "aes-128-gcm"
+                    }
+                ],
+                "network": "udp"
+            }
         }
     ],
     "outbounds": [
