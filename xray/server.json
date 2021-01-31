@@ -45,7 +45,7 @@
                 "decryption": "none",
                 "fallbacks": [
                     {
-                        "dest": "127.0.0.1:80"
+                        "dest": 80
                     }
                 ]
             },
