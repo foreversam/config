@@ -1,0 +1,7 @@
+{
+    "AutoRestart": false,
+    "FarmingDelay": 120,
+    "Headless": true,
+    "Statistics": false,
+    "UpdateChannel": 1
+}
